@@ -1,0 +1,16 @@
+name: Kubernetes Deploy Action
+description: A GitHub Action for deploying a Kubernetes application to an internal Parallax Digital cluster.
+runs:
+  using: node16
+  main: ./bootstrap-shim.js
+inputs:
+  configuration:
+    description: The Kubernetes configuration containing all contexts to deploy to.
+    required: true
+  resources:
+    description: The path to the resources to deploy.
+    required: true
+  namespace:
+    description: The Kubernetes namespace to deploy to.
+    required: true
+    default: ${{ github.event.repository.name }}-${{ github.event.deployment.environment }}
