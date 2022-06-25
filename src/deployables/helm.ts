@@ -36,6 +36,14 @@ export class Helm implements deployable.Deployable {
 		await exec.exec("helm", ["dependency", "update", this.path]);
 	}
 
+	async check(): Promise<void> {
+		await exec.exec("helm", [
+			"lint",
+			"--strict",
+			this.path,
+		]);
+	}
+
 	async deploy(clusterConfigurationPath:string, contextName:string): Promise<void> {
 		await exec.exec("helm", [
 			"--kubeconfig", clusterConfigurationPath,

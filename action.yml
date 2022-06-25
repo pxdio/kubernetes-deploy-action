@@ -14,3 +14,7 @@ inputs:
     description: The Kubernetes namespace to deploy to.
     required: true
     default: ${{ github.event.repository.name }}-${{ github.event.deployment.environment }}
+  event:
+    description: The event that triggered the workflow.
+    required: true
+    default: ${{ github.event_name }}
