@@ -4,9 +4,13 @@ runs:
   using: node16
   main: ./bootstrap-shim.js
 inputs:
+  event:
+    description: The event that triggered the workflow.
+    required: true
+    default: ${{ github.event_name }}
   configuration:
     description: The Kubernetes configuration containing all contexts to deploy to.
-    required: true
+    required: false
   resources:
     description: The path to the resources to deploy.
     required: true
@@ -14,7 +18,3 @@ inputs:
     description: The Kubernetes namespace to deploy to.
     required: true
     default: ${{ github.event.repository.name }}-${{ github.event.deployment.environment }}
-  event:
-    description: The event that triggered the workflow.
-    required: true
-    default: ${{ github.event_name }}
