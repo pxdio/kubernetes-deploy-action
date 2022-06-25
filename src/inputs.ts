@@ -4,6 +4,7 @@ export class Inputs {
 	configuration = core.getInput("configuration", {required: true});
 	resources = core.getInput("resources", {required: true});
 	namespace = core.getInput("namespace", {required: true});
+	event = core.getInput("event", {required: true});
 }
 
 export default function get():Inputs {

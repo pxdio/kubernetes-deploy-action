@@ -12,14 +12,17 @@ async function main() {
 
 	const deployable = await deployableFinder.findDeployable(inputs().resources);
 	await deployable.setup();
+	await deployable.check();
 
-	const configuration = yaml.load(inputs().configuration) as kubernetesConfiguration.KubernetesConfiguration;
-	await tmp.withFile(async clusterConfigurationFile => {
-		await fs.promises.writeFile(clusterConfigurationFile.path, yaml.dump(configuration));
-		for (const context of configuration.contexts) {
-			await deployable.deploy(clusterConfigurationFile.path, context.name);
-		}
-	});
+	if (inputs().event === "deployment") {
+		const configuration = yaml.load(inputs().configuration) as kubernetesConfiguration.KubernetesConfiguration;
+		await tmp.withFile(async clusterConfigurationFile => {
+			await fs.promises.writeFile(clusterConfigurationFile.path, yaml.dump(configuration));
+			for (const context of configuration.contexts) {
+				await deployable.deploy(clusterConfigurationFile.path, context.name);
+			}
+		});
+	}
 }
 
 main().catch(error => core.setFailed(error.stack || error));
