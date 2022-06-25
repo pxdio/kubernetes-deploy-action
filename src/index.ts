@@ -14,7 +14,7 @@ async function main() {
 	await deployable.setup();
 	await deployable.check();
 
-	if (inputs().event === "deployment") {
+	if (inputs().isDeployment()) {
 		const configuration = yaml.load(inputs().configuration) as kubernetesConfiguration.KubernetesConfiguration;
 		await tmp.withFile(async clusterConfigurationFile => {
 			await fs.promises.writeFile(clusterConfigurationFile.path, yaml.dump(configuration));
