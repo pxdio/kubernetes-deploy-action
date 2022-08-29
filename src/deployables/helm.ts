@@ -45,6 +45,7 @@ export class Helm implements deployable.Deployable {
 	}
 
 	async deploy(clusterConfigurationPath:string, contextName:string): Promise<void> {
+		const commitSHA = process.env.GITHUB_SHA;
 		await exec.exec("helm", [
 			"--kubeconfig", clusterConfigurationPath,
 			"--kube-context", contextName,
@@ -55,6 +56,7 @@ export class Helm implements deployable.Deployable {
 			this.path,
 			"--create-namespace",
 			"--wait",
+			"--set", `commitSHA=${commitSHA}`,
 		]);
 	}
 }
