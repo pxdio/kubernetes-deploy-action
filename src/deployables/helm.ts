@@ -7,8 +7,8 @@ import * as toolCache from "@actions/tool-cache";
 import * as deployable from "./deployable";
 import inputs from "./../inputs";
 
-const helmVersion = "3.6.3";
-const helmExpectedSHA256 = "07c100849925623dc1913209cd1a30f0a9b80a5b4d6ff2153c609d11b043e262";
+const helmVersion = "3.13.3";
+const helmExpectedSHA256 = "bbb6e7c6201458b235f335280f35493950dcd856825ddcfd1d3b40ae757d5c7d";
 
 export class Helm implements deployable.Deployable {
 	path: string;
