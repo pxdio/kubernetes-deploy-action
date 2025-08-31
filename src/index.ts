@@ -2,9 +2,9 @@ import * as fs from "fs";
 import * as core from "@actions/core";
 import * as tmp from "tmp-promise";
 import * as yaml from "js-yaml";
-import * as deployableFinder from "./deployable-finder";
-import * as kubernetesConfiguration from "./kubernetes-configuration";
-import inputs from "./inputs";
+import * as deployableFinder from "./deployable-finder.js";
+import * as kubernetesConfiguration from "./kubernetes-configuration.js";
+import inputs from "./inputs.js";
 import sourceMapSupport from "source-map-support";
 
 async function main() {
