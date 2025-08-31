@@ -17,7 +17,7 @@ jobs:
         id: prepare-nodejs
         uses: chrisgavin/nodejs-prepare-action@7b5f9b248f3bfec14724678b20b97d027a879917
       - name: Setup NodeJS
-        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: ${{ steps.prepare-nodejs.outputs.node-version }}
       - name: Install Dependencies
