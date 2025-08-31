@@ -19,7 +19,7 @@
 	},
 	"devDependencies": {
 		"@tsconfig/node20": "^20.1.6",
-		"@types/jest": "^26.0.23",
+		"@types/jest": "^30.0.0",
 		"@types/js-yaml": "^4.0.9",
 		"@types/source-map-support": "^0.5.10",
 		"@types/temp": "^0.9.4",
