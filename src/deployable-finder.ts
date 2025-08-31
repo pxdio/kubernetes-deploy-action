@@ -1,5 +1,5 @@
-import * as deployable from "./deployables/deployable";
-import * as helm from "./deployables/helm";
+import * as deployable from "./deployables/deployable.js";
+import * as helm from "./deployables/helm.js";
 
 const deployables = [
 	helm.Helm,
