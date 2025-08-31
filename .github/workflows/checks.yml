@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
       - name: Prepare NodeJS
         id: prepare-nodejs
-        uses: chrisgavin/nodejs-prepare-action@5a9adfe1877a3a3f114772464efcc7d20df36847
+        uses: chrisgavin/nodejs-prepare-action@7b5f9b248f3bfec14724678b20b97d027a879917
       - name: Setup NodeJS
         uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8
         with:
