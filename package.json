@@ -25,7 +25,7 @@
 		"@types/source-map-support": "^0.5.10",
 		"@types/temp": "^0.9.4",
 		"eslint": "^9.34.0",
-		"jest": "^30.1.1",
+		"jest": "^30.1.2",
 		"ts-jest": "^29.4.1",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.9.2",
