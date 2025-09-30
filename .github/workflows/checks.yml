@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Prepare NodeJS
         id: prepare-nodejs
-        uses: chrisgavin/nodejs-prepare-action@7b5f9b248f3bfec14724678b20b97d027a879917
+        uses: chrisgavin/nodejs-prepare-action@7b5f9b248f3bfec14724678b20b97d027a879917 # 0.0.6
       - name: Setup NodeJS
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ steps.prepare-nodejs.outputs.node-version }}
       - name: Install Dependencies
