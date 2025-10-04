@@ -4,7 +4,8 @@ export class Inputs {
 	event = core.getInput("event", {required: true});
 	resources = core.getInput("resources", {required: true});
 	namespace = core.getInput("namespace", {required: this.isDeployment()});
-	configuration = core.getInput("configuration", {required: this.isDeployment()});
+	configuration = core.getInput("configuration");
+	clusters = core.getInput("clusters");
 
 	isDeployment(): boolean {
 		return this.event === "deployment";

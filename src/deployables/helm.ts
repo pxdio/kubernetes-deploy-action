@@ -44,10 +44,15 @@ export class Helm implements deployable.Deployable {
 		]);
 	}
 
-	async deploy(clusterConfigurationPath:string, contextName:string): Promise<void> {
+	async deploy(clusterConfigurationPath:string | undefined, contextName:string): Promise<void> {
 		const commitSHA = process.env.GITHUB_SHA;
-		await exec.exec("helm", [
-			"--kubeconfig", clusterConfigurationPath,
+		let helmArguments: string[] = [];
+		if (clusterConfigurationPath) {
+			helmArguments = helmArguments.concat([
+				"--kubeconfig", clusterConfigurationPath,
+			]);
+		}
+		helmArguments = helmArguments.concat([
 			"--kube-context", contextName,
 			"--namespace", inputs().namespace,
 			"upgrade",
@@ -58,5 +63,6 @@ export class Helm implements deployable.Deployable {
 			"--wait",
 			"--set", `commitSHA=${commitSHA}`,
 		]);
+		await exec.exec("helm", helmArguments);
 	}
 }

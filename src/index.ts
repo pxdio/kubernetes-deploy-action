@@ -15,13 +15,20 @@ async function main() {
 	await deployable.check();
 
 	if (inputs().isDeployment()) {
-		const configuration = yaml.load(inputs().configuration) as kubernetesConfiguration.KubernetesConfiguration;
-		await tmp.withFile(async clusterConfigurationFile => {
-			await fs.promises.writeFile(clusterConfigurationFile.path, yaml.dump(configuration));
-			for (const context of configuration.contexts) {
-				await deployable.deploy(clusterConfigurationFile.path, context.name);
+		if (inputs().configuration !== "") {
+			const configuration = yaml.load(inputs().configuration) as kubernetesConfiguration.KubernetesConfiguration;
+			await tmp.withFile(async clusterConfigurationFile => {
+				await fs.promises.writeFile(clusterConfigurationFile.path, yaml.dump(configuration));
+				for (const context of configuration.contexts) {
+					await deployable.deploy(clusterConfigurationFile.path, context.name);
+				}
+			});
+		} else if (inputs().clusters !== "") {
+			const clusters = inputs().clusters.split(/\s+/m);
+			for (const cluster of clusters) {
+				await deployable.deploy(undefined, cluster);
 			}
-		});
+		}
 	}
 }
 
