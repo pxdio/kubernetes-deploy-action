@@ -28,6 +28,8 @@ async function main() {
 			for (const cluster of clusters) {
 				await deployable.deploy(undefined, cluster);
 			}
+		} else {
+			throw new Error("No clusters or configuration provided for deployment.");
 		}
 	}
 }
