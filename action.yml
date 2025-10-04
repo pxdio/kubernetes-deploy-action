@@ -11,6 +11,9 @@ inputs:
   configuration:
     description: The Kubernetes configuration containing all contexts to deploy to.
     required: false
+  clusters:
+    description: The clusters to deploy to.
+    required: false
   resources:
     description: The path to the resources to deploy.
     required: true
