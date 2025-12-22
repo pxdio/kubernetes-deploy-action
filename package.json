@@ -19,7 +19,7 @@
 		"tmp-promise": "^3.0.3"
 	},
 	"devDependencies": {
-		"@tsconfig/node20": "^20.1.6",
+		"@tsconfig/node22": "^22.0.0",
 		"@types/jest": "^30.0.0",
 		"@types/js-yaml": "^4.0.9",
 		"@types/source-map-support": "^0.5.10",
